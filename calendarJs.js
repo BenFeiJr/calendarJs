@@ -172,6 +172,16 @@ const calendarJs = {
 
     getDay: function (date = new Date()) {
         return this._getDateInstance(date).getDate();
+    },
+
+    getDateString: function (date = new Date(), needZero = false, joiner = '/') {
+        const year = this.getYear(date);
+        let month = this.getMonth(date);
+        let day = this.getDay(date);
+        month = month < 10 && needZero ? '0' + month : month;
+        day = day < 10 && needZero ? '0' + day : day;
+
+        return `${year}${joiner}${month}${joiner}${day}`;
     }
 };
 
